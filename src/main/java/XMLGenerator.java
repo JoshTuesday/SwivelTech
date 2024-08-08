@@ -23,6 +23,10 @@ public class XMLGenerator implements XMLGeneratorInterface{
 
     @Override
     public void generate(List<Dependency> dependencies, String filePath) throws IOException {
+
+        // This implements data validation and runs developer testing since lines
+        // are read before processing them (skip empty lines and log invalid line
+        // formats
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write("<dependencies>\n");
 
