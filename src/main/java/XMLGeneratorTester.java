@@ -3,7 +3,6 @@ import java.util.List;
 import java.io.File;
 import java.io.IOException;
 
-
 /**
  * The XMLGeneratorTester class is used to test the functionality of the XMLGenerator class
  */
@@ -31,10 +30,9 @@ public class XMLGeneratorTester {
         dependencies.add(new Dependency("org.projectlombok", "Lombok", "1.5"));
         dependencies.add(new Dependency("com.google.api-client", "google-api-client", "1.30.9"));
 
+        // Generate the XML file with the given dependencies
         XMLGenerator generator = new XMLGenerator();
         try {
-
-            // Generate the XML file with the given dependencies
             generator.generate(dependencies, "output.xml");
             File outputFile = new File("output.xml");
             if (!outputFile.exists()) {

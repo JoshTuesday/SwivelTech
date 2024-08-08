@@ -8,34 +8,33 @@ import java.io.IOException;
  * The XMLGenerator class is used for generating an
  * XML file based from a list of Dependency objects
  */
+
 public class XMLGenerator {
 
     // Logger instance for tracking messages
     private static final Logger logger = LoggerFactory.getLogger(XMLGenerator.class);
 
-
     /**
      * Generates an XML file from a list of Dependency objects
      *
      * @param dependencies the list of Dependency objects to be written to the XML file
-     * @param outputPath outputPath the path of the output XML file
      * @throws IOException if an I/O error occurs during writing the file
      */
-    public void generate(List<Dependency> dependencies, String outputPath) throws IOException {
-        try (FileWriter writer = new FileWriter(outputPath)) {
+
+    public void generate(List<Dependency> dependencies, String filePath) throws IOException {
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.write("<dependencies>\n");
 
             // Write each dependency as an XML element
             for (Dependency dependency : dependencies) {
-                writer.write("    <dependency>\n");
-                writer.write("        <groupId>" + dependency.getGroupId() + "</groupId>\n");
-                writer.write("        <artifactId>" + dependency.getArtifactId() + "</artifactId>\n");
-                writer.write("        <version>" + dependency.getVersion() + "</version>\n");
-                writer.write("    </dependency>\n");
-                logger.info("Written dependency: {}", dependency);
+                writer.write("  <dependency>\n");
+                writer.write("    <groupId>" + dependency.getGroupId() + "</groupId>\n");
+                writer.write("    <artifactId>" + dependency.getArtifactId() + "</artifactId>\n");
+                writer.write("    <version>" + dependency.getVersion() + "</version>\n");
+                writer.write("  </dependency>\n");
             }
 
-            // End the root element
+            // End on the root element
             writer.write("</dependencies>\n");
         } catch (IOException e) {
 
