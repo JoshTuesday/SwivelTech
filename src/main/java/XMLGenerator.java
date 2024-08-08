@@ -9,7 +9,7 @@ import java.io.IOException;
  * XML file based from a list of Dependency objects
  */
 
-public class XMLGenerator {
+public class XMLGenerator implements XMLGeneratorInterface{
 
     // Logger instance for tracking messages
     private static final Logger logger = LoggerFactory.getLogger(XMLGenerator.class);
@@ -21,6 +21,7 @@ public class XMLGenerator {
      * @throws IOException if an I/O error occurs during writing the file
      */
 
+    @Override
     public void generate(List<Dependency> dependencies, String filePath) throws IOException {
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write("<dependencies>\n");

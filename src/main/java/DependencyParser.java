@@ -11,7 +11,7 @@ import java.io.IOException;
  * defined Dependency objects
  */
 
-public class DependencyParser {
+public class DependencyParser implements DependencyParserInterface {
 
     // Logger instance for tracking messages
     private static final Logger logger = LoggerFactory.getLogger(DependencyParser.class);
@@ -24,6 +24,7 @@ public class DependencyParser {
      * @throws IOException if an I/O error occurs reading from the file
      */
 
+    @Override
     public List<Dependency> parse(String filePath) throws IOException {
         List<Dependency> dependencies = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
